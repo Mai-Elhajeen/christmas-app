@@ -30,8 +30,6 @@ CREATE TABLE product_category (
     PRIMARY KEY (product_id, category_id)
 );
 
-COMMIT;
-
 -- insert some sample data:
 INSERT INTO categories (name, allowed_attributes)
 VALUES(
@@ -61,6 +59,8 @@ INSERT INTO product_category (product_id, category_id, attributes)
 VALUES(1, 1, '{"display_size": 10}'),
     (2, 1, '{"display_size": 20}'),
     (2, 2, '{"display_size":30, "shape":"stars"}');
+
+COMMIT;
 
 -- select p.*
 -- from products p

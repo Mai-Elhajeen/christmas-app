@@ -4,8 +4,8 @@
   "description": "with backend JavaScript [database &amp; node.js]",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server",
-    "dev": "nodemon ./server"
+    "start": "NODE_ENV=production node ./server",
+    "dev": "NODE_ENV=development nodemon ./server"
   },
   "keywords": [],
   "author": "",
