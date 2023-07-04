@@ -9,7 +9,22 @@
   <body>
     <h1>Welcome!</h1>
 
+    <form class="form" action="/add-product" method="post">
+      <input type="text" name="name" value="" placeholder="name product" />
+      <input
+        type="text"
+        name="description"
+        value=""
+        placeholder="description"
+      />
+      <input type="text" name="image" value="" placeholder="image link" />
+      <input type="text" name="price" value="" placeholder="price" />
+      <button type="submit" name="button">+ Add Product</button>
+    </form>
+
     <div id="content"></div>
+    <button id="add-product" class="btn add-product">Add New Product</button>
+
     <script type="text/javascript" src="./app.js"></script>
   </body>
 </html>
