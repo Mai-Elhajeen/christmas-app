@@ -3,7 +3,7 @@ const connection = require('../config/connection');
 
 const deleteProduct = (id) => {
   const sql = {
-    text: 'DELETE FROM products WHERE "id" = $1;',
+    text: 'DELETE FROM products WHERE id = $1;',
     values: [id]
   };
 

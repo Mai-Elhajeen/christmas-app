@@ -24,10 +24,13 @@ router.post('/add-product', (req, res) => {
   ).then(data => res.redirect('/'));
 })
 
-router.delete('/delete-product/:id', (req, res) => {
+router.delete('/delete-product/:id', (req, res, next) => {
   const { id } = req.body;
   deleteProduct(id)
-    .then(data => res.json(data.rows))
+    .then(res.send({ message: 'deleted successfully' }))
+    .then(data => res.redirect('/'))
+    .catch((err) => next(err));
 })
 
 module.exports = router;
+

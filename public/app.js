@@ -21,6 +21,9 @@ fetch('/products')
       const cardIconTrash = document.createElement("i");
       cardIconTrash.setAttribute("class", "bx bx-trash gift__icon");
       card.appendChild(cardIconTrash);
+      cardIconTrash.addEventListener('click', () => {
+        deleteGift(element)
+      });
 
       const cardPrice = document.createElement("h2");
       cardPrice.textContent = `${data[i]["price"]}$`;
@@ -40,3 +43,7 @@ fetch('/products')
     });
   }
   );
+
+const deleteGift = (data) => {
+  console.log(data);
+}
