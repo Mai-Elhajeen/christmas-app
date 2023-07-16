@@ -1,22 +1,49 @@
 // Add code here 
+
 fetch('/products')
-    .then(res => res.json())
-    .then(products => {
-        const contentDiv = document.getElementById('content');
-        products.forEach(product => {
-            const productDiv = document.createElement('div');
-            const productName = document.createElement('h1');
-            const productDescription = document.createElement('p');
-            const productImg = document.createElement('img');
-            const productPrice = document.createElement('span');
+  .then(res => res.json())
+  .then((data) => {
+    const container = document.getElementById('product-container');
 
-            productName.textContent = product.name;
-            productDescription.textContent = product.description;
-            productImg.src = product.image;
-            productPrice.textContent = product.price;
+    data.forEach((element, i) => {
+      const card = document.createElement("article");
+      card.setAttribute("class", "gift__card");
+      container.appendChild(card)
 
-            productDiv.append(productName, productDescription, productImg, productPrice);
-            contentDiv.appendChild(productDiv);
-        });
-    }
-    );
+      const cardImg = document.createElement("img");
+      cardImg.src = data[i]["image"];
+      card.appendChild(cardImg);
+
+      const cardIconHeart = document.createElement("i");
+      cardIconHeart.setAttribute("class", "bx bx-heart gift__icon");
+      card.appendChild(cardIconHeart);
+
+      const cardIconTrash = document.createElement("i");
+      cardIconTrash.setAttribute("class", "bx bx-trash gift__icon");
+      card.appendChild(cardIconTrash);
+      cardIconTrash.addEventListener('click', () => {
+        deleteGift(element)
+      });
+
+      const cardPrice = document.createElement("h2");
+      cardPrice.textContent = `${data[i]["price"]}$`;
+      cardPrice.setAttribute("class", "gift__price");
+      card.appendChild(cardPrice);
+
+      const cardName = document.createElement("h3");
+      cardName.textContent = data[i]["name"];
+      cardName.setAttribute("class", "gift__title");
+      card.appendChild(cardName);
+
+      const cardDescription = document.createElement("span");
+      let sliceText = data[i]["description"];
+      let result = sliceText.slice(0, 50);
+      cardDescription.textContent = result.concat('...');
+      card.appendChild(cardDescription);
+    });
+  }
+  );
+
+const deleteGift = (data) => {
+  console.log(data);
+}
